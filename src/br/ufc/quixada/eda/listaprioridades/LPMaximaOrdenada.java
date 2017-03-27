@@ -21,19 +21,19 @@ public class LPMaximaOrdenada {
 	
 	public void contruir(List<Integer> entrada){
             for(int i = 0; i < entrada.size(); i++){
-                this.vetor[i] = entrada.get(i);
+                vetor[i] = entrada.get(i);
             }
-            this.n = entrada.size();
-            quickSort(0, this.n - 1);
+            n = entrada.size();
+            quickSort(0, n - 1);
 	}
 	
 	public int getMaximaPrioridade(){
-            if(this.n > 0) return this.vetor[this.n - 1];
+            if(n > 0) return vetor[n - 1];
             return 0;
 	}
 	
 	public int remove(){
-        if(this.n > 0) return this.vetor[--this.n];
+        if(n > 0) return vetor[--n];
 		return 0;
 	}	
 	
@@ -50,18 +50,18 @@ public class LPMaximaOrdenada {
 	}
 	
 	public void alterarPrioridade(int prioridade, int novaPrioridade){
-		if(this.n > 0){
+		if(n > 0){
 			int i = 0;
-			for(;i < this.n; i++){
-				if(this.vetor[i] == prioridade){
+			for(;i < n; i++){
+				if(vetor[i] == prioridade){
 					break;
 				}
 			}
-			while(i < this.n - 1){
-				this.vetor[i] = this.vetor[i + 1];
+			while(i < n - 1){
+				vetor[i] = vetor[i + 1];
 				i++;
 			}
-			this.n--;
+			n--;
 			inserir(novaPrioridade);
 		}
 	}
@@ -75,24 +75,24 @@ public class LPMaximaOrdenada {
 	}
 	
 	private int particiona(int p, int r){		
-            int pivo = this.vetor[p];
+            int pivo = vetor[p];
             int i = p + 1, f = r;
 
             while (i <= f) {
-                if (this.vetor[i] <= pivo)
+                if (vetor[i] <= pivo)
                     i++;
-                else if (pivo < this.vetor[f])
+                else if (pivo < vetor[f])
                     f--;
                 else {
-                    int troca = this.vetor[i];
-                    this.vetor[i] = this.vetor[f];
-                    this.vetor[f] = troca;
+                    int troca = vetor[i];
+                    vetor[i] = vetor[f];
+                    vetor[f] = troca;
                     i++;
                     f--;
                 }
             }
-            this.vetor[p] = this.vetor[f];
-            this.vetor[f] = pivo;
+            vetor[p] = vetor[f];
+            vetor[f] = pivo;
             return f;
         }
 }

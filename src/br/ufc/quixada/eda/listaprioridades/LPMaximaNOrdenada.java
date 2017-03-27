@@ -7,7 +7,6 @@ import java.util.List;
  * @author fabio
  *
  */
-
 public class LPMaximaNOrdenada {
 	private int nMaximo = 0;
 	private int vetor[] = null;

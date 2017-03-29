@@ -2,7 +2,6 @@ package br.ufc.quixada.eda.listaprioridades;
 
 import java.util.List;
 
-
 public class HeapTernarioMaximo {
 	private int nMaximo = 0;
 	private int vetor[] = null;

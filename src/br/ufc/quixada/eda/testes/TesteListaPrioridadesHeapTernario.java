@@ -10,6 +10,7 @@ import br.ufc.quixada.eda.util.EDAUtil;
 import br.ufc.quixada.eda.util.Operacao;
 
 public class TesteListaPrioridadesHeapTernario {
+	
 	public static void main(String args[]){		
 		try {
 			for (int tamanho : CriarInstancia.tamanhoInstancias) {				

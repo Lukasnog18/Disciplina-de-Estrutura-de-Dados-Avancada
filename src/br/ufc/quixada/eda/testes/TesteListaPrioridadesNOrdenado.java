@@ -41,7 +41,7 @@ public class TesteListaPrioridadesNOrdenado {
                   //  System.out.println(operacao.getId() + " " + operacao.getValor() + " " + operacao.getNovoValor());
 		}	
 		long tempo = System.currentTimeMillis() - tempoInicial;	
-		System.out.println("Tempo gasto por -> " + arquivoOperacao + ": " + tempo);
+		System.out.println(arquivoOperacao + ": " + tempo);
 				
 //		//PARA ARQUIVO COM MAIOR QUANTIDADE DE ALTERACOES
 		arquivoOperacao = "operacoesA_" + tamanho;
@@ -69,7 +69,7 @@ public class TesteListaPrioridadesNOrdenado {
 		}
 		}
 		tempo = System.currentTimeMillis() - tempoInicial;			  
-		System.out.println("Tempo gasto por -> " + arquivoOperacao + ": " + tempo);	
+		System.out.println(arquivoOperacao + ": " + tempo);	
 		
 //		//PARA ARQUIVO COM MAIOR QUANTIDADE DE SELECAO
 		arquivoOperacao = "operacoesS_" + tamanho;
@@ -98,7 +98,7 @@ public class TesteListaPrioridadesNOrdenado {
 		}
 		
 		tempo = System.currentTimeMillis() - tempoInicial;
-		System.out.println("Tempo gasto por -> " + arquivoOperacao + ": " + tempo);
+		System.out.println(arquivoOperacao + ": " + tempo);
 //				
 //		//PARA ARQUIVO COM MAIOR QUANTIDADE DE REMOCAO
 		arquivoOperacao = "operacoesR_" + tamanho;
@@ -127,7 +127,7 @@ public class TesteListaPrioridadesNOrdenado {
 		}
 		
 		tempo = System.currentTimeMillis() - tempoInicial;
-		System.out.println("Tempo gasto por -> " + arquivoOperacao + ": " + tempo);
+		System.out.println(arquivoOperacao + ": " + tempo);
 		}
 		} catch (IOException e) {
 			e.printStackTrace();

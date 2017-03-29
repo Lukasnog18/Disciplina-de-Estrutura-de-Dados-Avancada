@@ -16,7 +16,7 @@ public class TesteListaPrioridadesHeap {
 				String path = EDAConstants.caminhoPasta + "tarefa" + tamanho + ".txt";
 				List<Integer> entrada = EDAUtil.getDadosIniciais(path);
 				
-				//PARA ARQUIVO COM MAIOR QUANTIDADE DE INSERÇÕES
+				//PARA ARQUIVO COM MAIOR QUANTIDADE DE INSERï¿½ï¿½ES
 				String arquivoOperacao = "operacoesI_" + tamanho;
 				path = EDAConstants.caminhoPasta + arquivoOperacao + ".txt";
 				List<Operacao> operacoes = EDAUtil.getOperacoes(path);
@@ -41,9 +41,9 @@ public class TesteListaPrioridadesHeap {
 					//System.out.println(operacao.getId() + " " + operacao.getValor() + " " + operacao.getNovoValor());
 				}	
 				long tempo = System.currentTimeMillis() - tempoInicial;			  
-				System.out.println("Tempo gasto por -> " + arquivoOperacao + ": " + tempo);
+				System.out.println(arquivoOperacao + ": " + tempo);
 				
-				//PARA ARQUIVO COM MAIOR QUANTIDADE DE ALTERAÇÕES
+				//PARA ARQUIVO COM MAIOR QUANTIDADE DE ALTERAï¿½ï¿½ES
 				arquivoOperacao = "operacoesA_" + tamanho;
 				path = EDAConstants.caminhoPasta + arquivoOperacao + ".txt";
 				operacoes = EDAUtil.getOperacoes(path);
@@ -68,7 +68,7 @@ public class TesteListaPrioridadesHeap {
 					//System.out.println(operacao.getId() + " " + operacao.getValor() + " " + operacao.getNovoValor());
 				}	
 				tempo = System.currentTimeMillis() - tempoInicial;			  
-				System.out.println("Tempo gasto por -> " + arquivoOperacao + ": " + tempo);
+				System.out.println(arquivoOperacao + ": " + tempo);
 				
 				//PARA ARQUIVO COM MAIOR QUANTIDADE DE SELECAO
 				arquivoOperacao = "operacoesS_" + tamanho;
@@ -95,7 +95,7 @@ public class TesteListaPrioridadesHeap {
 					//System.out.println(operacao.getId() + " " + operacao.getValor() + " " + operacao.getNovoValor());
 				}	
 				tempo = System.currentTimeMillis() - tempoInicial;			  
-				System.out.println("Tempo gasto por -> " + arquivoOperacao + ": " + tempo);
+				System.out.println(arquivoOperacao + ": " + tempo);
 				
 				//PARA ARQUIVO COM MAIOR QUANTIDADE DE REMOCAO
 				arquivoOperacao = "operacoesR_" + tamanho;
@@ -122,7 +122,7 @@ public class TesteListaPrioridadesHeap {
 					//System.out.println(operacao.getId() + " " + operacao.getValor() + " " + operacao.getNovoValor());
 				}	
 				tempo = System.currentTimeMillis() - tempoInicial;			  
-				System.out.println("Tempo gasto por -> " + arquivoOperacao + ": " + tempo);
+				System.out.println(arquivoOperacao + ": " + tempo);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

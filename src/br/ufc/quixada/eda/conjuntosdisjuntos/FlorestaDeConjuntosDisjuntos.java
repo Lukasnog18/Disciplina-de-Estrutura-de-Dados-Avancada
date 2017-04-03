@@ -52,5 +52,6 @@ public class FlorestaDeConjuntosDisjuntos {
 	
 	public void union(int v, int u){
 		link_set(find_set(v), find_set(u));
-	}	
+	}
+	
 }

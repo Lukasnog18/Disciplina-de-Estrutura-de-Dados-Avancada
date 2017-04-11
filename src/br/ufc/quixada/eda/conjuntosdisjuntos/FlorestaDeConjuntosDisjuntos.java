@@ -31,9 +31,8 @@ public class FlorestaDeConjuntosDisjuntos {
 	public int find_set(int v){
 		if(v == pai[v]) return v;
 		else{
-			int pai_v = find_set(pai[v]);
-			pai[v] = pai_v;
-			return pai_v;
+			pai[v] = find_set(pai[v]);
+			return pai[v];
 		}
 	}
 	

@@ -11,18 +11,19 @@ import java.util.Scanner;
 import br.ufc.quixada.eda.listaprioridades.HeapMaximo;
 
 /**
- * Cria as instâncias juntamente com as operações.
+ * Cria as instÃ¢ncias juntamente com as operaÃ§Ãµes.
  * @author fabio
  *
  */
 public class CriarInstancia {	
-	public static int tamanhoInstancias[] = {100, 10000, 50000, 100000, 500000, 800000};
+	//public static int tamanhoInstancias[] = {100, 10000, 50000, 100000, 500000, 800000};
+	public static int tamanhoInstancias[] = {60, 100, 200, 300, 400, 500, 600, 700, 800, 900};
 	public static void criar(){
 		try {
 			@SuppressWarnings("resource")
 			Scanner scanner = new Scanner(System.in);
 			Random gerador = new Random(95487145);
-			System.out.println("CRIAÇÃO DA INSTÂNCIA DE ENTRADA");
+			System.out.println("CRIAÃ‡ÃƒO DA INSTÃ‚NCIA DE ENTRADA");
 						
 			for (int tamanho : tamanhoInstancias) {					
 				//System.out.println("DIGITE O TAMANHO (NUMERO PAR) (OU 0 PARA ENCERRAR): ");
@@ -47,11 +48,11 @@ public class CriarInstancia {
 				for (Integer valor : prioridadesIniciais) gravarArq.println(valor);							
 				arq.close();
 				
-				//GERANDO AS OPERAÇÕES				
-				int qtd = 2;//TEM DE SER UM NÚMERO PAR
+				//GERANDO AS OPERAÃ‡Ã•ES				
+				int qtd = 2;//TEM DE SER UM NÃšMERO PAR
 				int qtdOperacoes = tamanho*qtd;	
 
-				//OPERAÇÕES EM MAIOR QUANTIDADE: INSERÇÃO
+				//OPERAÃ‡Ã•ES EM MAIOR QUANTIDADE: INSERÃ‡ÃƒO
 				arq = new FileWriter(EDAConstants.caminhoPasta + "operacoesI_" + tamanho + ".txt");
 				gravarArq = new PrintWriter(arq);					
 				HeapMaximo listaPrioridade = new HeapMaximo(qtd*prioridadesIniciais.size());
@@ -87,7 +88,7 @@ public class CriarInstancia {
 				}
 				arq.close();			
 								
-				//OPERAÇÕES EM MAIOR QUANTIDADE: REMOÇÃO
+				//OPERAÃ‡Ã•ES EM MAIOR QUANTIDADE: REMOÃ‡ÃƒO
 				qtdOperacoes = tamanho*qtd;
 				arq = new FileWriter(EDAConstants.caminhoPasta + "operacoesR_" + tamanho + ".txt");
 				gravarArq = new PrintWriter(arq);					
@@ -124,7 +125,7 @@ public class CriarInstancia {
 				}		
 				arq.close();
 				
-				//OPERAÇÕES EM MAIOR QUANTIDADE: ALTERAÇÃO
+				//OPERAÃ‡Ã•ES EM MAIOR QUANTIDADE: ALTERAÃ‡ÃƒO
 				qtdOperacoes = tamanho*qtd;
 				arq = new FileWriter(EDAConstants.caminhoPasta + "operacoesA_" + tamanho + ".txt");
 				gravarArq = new PrintWriter(arq);					
@@ -161,7 +162,7 @@ public class CriarInstancia {
 				}
 				arq.close();
 				
-				//OPERAÇÕES EM MAIOR QUANTIDADE: SELEÇÃO
+				//OPERAÃ‡Ã•ES EM MAIOR QUANTIDADE: SELEÃ‡ÃƒO
 				qtdOperacoes = tamanho*qtd;
 				arq = new FileWriter(EDAConstants.caminhoPasta + "operacoesS_" + tamanho + ".txt");
 				gravarArq = new PrintWriter(arq);					

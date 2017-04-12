@@ -7,8 +7,8 @@ public class FlorestaDeConjuntosDisjuntos {
 	
 	public FlorestaDeConjuntosDisjuntos(int n){
 		this.n = n;
-		pai = new int[n];
-		ordem = new int[n];
+		pai = new int[n + 1];
+		ordem = new int[n + 1];
 	}
 	
 	public void make_set(int i){
@@ -17,7 +17,7 @@ public class FlorestaDeConjuntosDisjuntos {
 	}
 	
 	public void make_set_all(){
-		for(int i = 0; i < n; i++)
+		for(int i = 1; i <= n; i++)
 			make_set(i);
 	}
 	
@@ -25,7 +25,7 @@ public class FlorestaDeConjuntosDisjuntos {
 //		Recursivamente
 		
 		if(v == pai[v]) return v;
-		else return find_set(pai[v]);
+		else return find_set1(pai[v]);
 	}
 	
 	public int find_set(int v){
@@ -50,6 +50,6 @@ public class FlorestaDeConjuntosDisjuntos {
 	}
 	
 	public void union(int v, int u){
-		link_set(find_set(v), find_set(u));
+		link_set(find_set1(v), find_set1(u));
 	}	
 }

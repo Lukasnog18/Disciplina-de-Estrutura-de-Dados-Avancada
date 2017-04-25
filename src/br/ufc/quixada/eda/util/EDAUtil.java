@@ -85,7 +85,6 @@ public class EDAUtil {
     		g.setM(scanner.nextInt());
     	}
     	
-    	int i = 0;
     	while(scanner.hasNext()){
     		listAresta.add(new Aresta(scanner.nextInt(), scanner.nextInt(), scanner.nextInt()));
     	}

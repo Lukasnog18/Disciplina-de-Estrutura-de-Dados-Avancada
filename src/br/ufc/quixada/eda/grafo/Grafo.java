@@ -8,6 +8,7 @@ public class Grafo {
 	private int m;
 //	private Aresta arestas[] = null;
 	private List<Aresta> Arestas = new ArrayList<Aresta>();
+	private ListaAdjacencia adj[];
 	
 //	public static void quicksortVet(Aresta[] arestas, int i, int j){
 //		if(i < j){
@@ -86,10 +87,19 @@ public class Grafo {
 //			this.arestas = arestas;
 //		}
 		
+	
 	public List<Aresta> getArestas() {
 		return Arestas;
 	}
 	
+	public ListaAdjacencia[] getAdj() {
+		return adj;
+	}
+
+	public void setAdj(ListaAdjacencia[] adj) {
+		this.adj = adj;
+	}
+
 	public void setAresta(List<Aresta> aresta) {
 		this.Arestas = aresta;
 	}

@@ -11,8 +11,8 @@ public class Dijkstra {
 	
 	public Dijkstra (){}
 	
-	public void executar(Grafo g){
-		inicializacao(g.getM(), (int) g.getArestas().get(0).getW());
+	public void executar(Grafo g, int origem){
+		inicializacao(g.getN(), origem);
 		HeapMinimo Q = new HeapMinimo(g.getN());
 		Q.contruir(this.d);
 		

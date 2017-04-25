@@ -20,7 +20,7 @@ public class TesteDijkstra {
 					long tempoInicial = System.currentTimeMillis();	
 					
 					Dijkstra dj = new Dijkstra();
-					dj.executar(entrada);
+					dj.executar(entrada, 1);
 					
 					long tempo = System.currentTimeMillis() - tempoInicial;			  
 					System.out.println("Tempo gasto por -> tb8ch" + tamanho + "_" + i + ": " + tempo);

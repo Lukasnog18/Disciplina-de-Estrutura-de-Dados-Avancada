@@ -19,8 +19,8 @@ public class HeapMinimo{
 	}
 	
 	public void contruir(int prioridade[]){
-		for (int i = 1; i <= prioridade.length; i++) {
-			vetor[i] = prioridade[i - 1];
+		for (int i = 1; i < prioridade.length; i++) {
+			vetor[i] = prioridade[i];
 			id[i] = i;
 		}
 		this.n = prioridade.length;
@@ -46,7 +46,7 @@ public class HeapMinimo{
 	}
 	
 	private void descer(int i){
-		int j = 2 * (i + 1);
+		int j = 2 * i;
 		if(j <= this.n){
 			if(j + 1 <= this.n && this.vetor[j] < this.vetor[j + 1]) j++;
 			if(this.vetor[i] > this.vetor[j]){

@@ -1,98 +1,108 @@
 package br.ufc.quixada.eda.arvoresplay;
 
-public class TreeSplay<T> {
-	private NodeSplay<T> root;
+import java.util.Date;
 
-	private NodeSplay<T> leftRotation(NodeSplay<T> node){
-		NodeSplay<T> aux = node.getRight();
-		node.setRight(aux.getLeft());
-		aux.setLeft(node);
-		return aux;
+import br.ufc.quixada.eda.trabalhofinal.Pessoa;
+
+public class TreeSplay<Chave extends Comparable<Chave>, Info> {
+
+	private NodeSplay<Chave, Info> raiz;
+	
+	
+	private NodeSplay<Chave, Info> rightRotation(NodeSplay<Chave, Info> no){
+		NodeSplay<Chave, Info> novoNo = no.getEsq();
+		no.setEsq(novoNo.getDir());
+		novoNo.setDir(no);
+		return novoNo;
 	}
-
-	private NodeSplay<T> rightRotation(NodeSplay<T> node){
-		NodeSplay<T> aux = node.getLeft();
-		node.setLeft(aux.getRight());
-		aux.setRight(node);
-		return aux;
+	private NodeSplay<Chave, Info> leftRotation(NodeSplay<Chave, Info> no){
+		NodeSplay<Chave, Info> novoNo = no.getDir();
+		no.setDir(novoNo.getEsq());
+		novoNo.setEsq(no);
+		return novoNo;
 	}
-
-	private NodeSplay<T> splay(NodeSplay<T> node, int key){
-		if(node == null) return null;
-		if(node.getKey() == key) return node;
-		if(node.getKey() > key){
-			if(node.getLeft() != null){
-				node.setLeft(splay(node.getLeft(), key));
-				node = rightRotation(node);
+	
+	private NodeSplay<Chave, Info> sPlay(NodeSplay<Chave, Info> raiz, Chave chave ){
+		if(raiz == null) return null;
+		if(raiz.getChave() == chave) return raiz;
+		
+		if(chave.compareTo(raiz.getChave()) < 0){
+			if(raiz.getEsq() != null){
+				raiz.setEsq(sPlay(raiz.getEsq(), chave));
+				raiz = rightRotation(raiz);
 			}
-		}else if(node.getKey() < key){
-			if(node.getRight() != null){
-				node.setRight(splay(node.getRight(), key));
-				node = leftRotation(node);
-			}
-		}
-
-		return node;
-	}
-
-	public T get(int key){
-		root = splay(root, key);
-		if(root.getKey() == key) return root.getInfo();
-		else return null;
-	}
-
-	public void insert(int key, T info){
-		if(root == null)
-			root = new NodeSplay<T>(key, info);
-		if(this.get(key) == null){
-			NodeSplay<T> node = new NodeSplay<T>(key, info);
-			if(root.getKey() < node.getKey()){
-				node.setLeft(root);
-				node.setRight(root.getRight());
-				this.root = node;
-			}else{
-				node.setLeft(root.getLeft());
-				node.setRight(root);
-				this.root = node;
+		}else {
+			if(raiz.getDir() != null){
+				raiz.setDir(sPlay(raiz.getDir(), chave));
+				raiz = leftRotation(raiz);
 			}
 		}
+		
+		return raiz;
+	}
+	
+	public void inserir(Chave chave, Info object){
+		raiz = inserir(raiz, chave, object);
+	}
+	
+	private NodeSplay<Chave, Info> inserir(NodeSplay<Chave, Info> raiz, Chave chave, Info object){
+		if(raiz == null)
+			return new NodeSplay<Chave, Info>(chave, object);
+		else if(0 > chave.compareTo(raiz.getChave())){
+			raiz.setEsq(inserir(raiz.getEsq(), chave, object));
+		}else if(0 < chave.compareTo(raiz.getChave())){
+			raiz.setDir(inserir(raiz.getDir(), chave, object));
+		}
+		raiz = sPlay(raiz, chave);
+		return raiz;
 	}
 
-	public void remove(int key){
-		if(this.get(key) != null){
-			if(root.getKey() == key){
-				root.setLeft(splay(root.getLeft(), key));
-				root.getLeft().setRight(root);
-				root = root.getLeft();
-				root.setRight(root.getRight().getRight());
-			}else{
-				root = splay(root, key);
+	public NodeSplay<Chave, Info> busca(Chave chave){
+		raiz = sPlay(raiz, chave);
+		if(0 == chave.compareTo(raiz.getChave()))
+			return raiz;
+		else
+			return null;
+	} 
+	
+	public void remover(Chave chave){
+		this.raiz = sPlay(this.raiz, chave);
+		if(this.raiz == null || this.raiz.getChave() != chave) return;
+		NodeSplay<Chave, Info> aux = sPlay(this.raiz.getEsq(), chave);
+		if(raiz.getDir() != null && aux != null) aux.setDir(raiz.getDir());
+		raiz = aux;
+	}
+	
+	private void mostraArvore(NodeSplay<Chave, Info> n, String s) {
+		if(n != null && (n.getEsq() != null || n.getDir() != null))
+			mostraArvore(n.getDir(), s + "r");
+		int tam = s.length();
+		for(int i = 0; i < tam - 1; i++) {
+			if(s.charAt(i) != s.charAt(i+1)) {
+				System.out.print("| "+"  ");
+			}else {
+				System.out.print("  "+"  ");
 			}
 		}
-	}
-
-	private String str(int nivel, char c){
-		String res = "";
-		if(nivel == 0)
-			return res;
-		while(nivel > 0){
-			res += " ";
-			nivel--;
+		if(s != "") {
+			if(s.endsWith("r") == true)
+				System.out.print("┌───");
+			else
+				System.out.print("└───");
 		}
-
-		return res;
-	}
-
-	private void rshow(NodeSplay<T> node, int nivel){
-		if(node == null)
+		if(n == null) {
+			System.out.println("#");
 			return;
-
-		rshow(node.getLeft(), nivel + 1);
-		System.out.println((str(4 * nivel, ' ')) + node.getKey());
-		rshow(node.getRight(), nivel + 1);
+		}
+		System.out.println(n.getChave());
+		if(n != null && (n.getEsq() != null || n.getDir() != null)) {
+			mostraArvore(n.getEsq(), s + "l");
+		}
+	}
+	
+	public void mostraArvore() {
+		mostraArvore(this.raiz, "");
+		System.out.println("\n\n");
 	}
 
-	public void show(){
-		rshow(this.root, 0);
-}
 }

@@ -1,47 +1,40 @@
 package br.ufc.quixada.eda.arvoresplay;
 
-public class NodeSplay<T> {
-	private NodeSplay<T> left, right;
-	private int key;
-	private T info;
+public class NodeSplay<Chave, Info> {
 	
-	public NodeSplay(int key, T info){
-		this.key = key;
-		this.info = info;
-		this.left = null;
-		this.right = null;
+	private NodeSplay<Chave, Info> dir, esq;
+	private Chave chave;
+	private Info object;
+	
+	public NodeSplay(Chave chave, Info object){
+		esq = null;
+		dir = null;
+		this.chave = chave;
+		this.object = object;
 	}
-
-	public NodeSplay<T> getLeft() {
-		return left;
+	
+	public NodeSplay<Chave, Info> getDir() {
+		return dir;
 	}
-
-	public void setLeft(NodeSplay<T> left) {
-		this.left = left;
+	public void setDir(NodeSplay<Chave, Info> direita) {
+		this.dir = direita;
 	}
-
-	public NodeSplay<T> getRight() {
-		return right;
+	public NodeSplay<Chave, Info> getEsq() {
+		return esq;
 	}
-
-	public void setRight(NodeSplay<T> right) {
-		this.right = right;
+	public void setEsq(NodeSplay<Chave, Info> esquerda) {
+		this.esq = esquerda;
 	}
-
-	public int getKey() {
-		return key;
+	public Chave getChave() {
+		return chave;
 	}
-
-	public void setKey(int key) {
-		this.key = key;
+	public void setChave(Chave chave) {
+		this.chave = chave;
 	}
-
-	public T getInfo() {
-		return info;
+	public Info getObject() {
+		return object;
 	}
-
-	public void setInfo(T info) {
-		this.info = info;
+	public void setObject(Info object) {
+		this.object = object;
 	}
-
 }
